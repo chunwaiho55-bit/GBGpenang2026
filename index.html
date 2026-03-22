@@ -2,1589 +2,763 @@
 <html lang="zh-HK">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🇲🇾 檳城 4日行程 — 清明特別版</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>🇲🇾 檳城 4日行程</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;700;900&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --sky: #0ea5e9;
-    --sky-light: #e0f2fe;
-    --orange: #f97316;
-    --orange-light: #fff7ed;
-    --red: #ef4444;
-    --red-light: #fef2f2;
-    --amber: #f59e0b;
-    --amber-light: #fffbeb;
-    --green: #22c55e;
-    --green-light: #f0fdf4;
-    --cyan: #06b6d4;
-    --cyan-light: #ecfeff;
-    --emerald: #10b981;
-    --purple: #a855f7;
-    --gray-50: #f9fafb;
-    --gray-100: #f3f4f6;
-    --gray-200: #e5e7eb;
-    --gray-400: #9ca3af;
-    --gray-500: #6b7280;
-    --gray-600: #4b5563;
-    --gray-700: #374151;
-    --gray-800: #1f2937;
-    --gray-900: #111827;
-    --blue: #2563eb;
-  }
+/* ── Reset ───────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;border:none;background:none}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── Tokens ──────────────────────────────────── */
+:root{
+  --blue:#2563eb;--blue-s:#93c5fd;
+  --teal:#0e7490;--teal-s:#a5f3fc;
+  --red:#dc2626;--red-s:#fca5a5;--red-bg:#fef2f2;
+  --amber:#b45309;--amber-s:#fde68a;--amber-bg:#fffbeb;
+  --green:#166534;--green-s:#86efac;--green-bg:#f0fdf4;
+  --em:#065f46;--em-s:#6ee7b7;--em-bg:#ecfdf5;
+  --g50:#f9fafb;--g100:#f3f4f6;--g200:#e5e7eb;
+  --g400:#9ca3af;--g500:#6b7280;--g600:#4b5563;--g800:#1f2937;--g900:#111827;
+  --r:12px;--rs:8px;--rxs:6px;
+}
 
-  body {
-    font-family: 'Noto Sans HK', sans-serif;
-    background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 40%, #fff7ed 100%);
-    min-height: 100vh;
-    padding: 12px;
-    color: var(--gray-900);
-    font-size: 14px;
-  }
+/* ── Layout ──────────────────────────────────── */
+body{
+  font-family:'Noto Sans HK',sans-serif;
+  background:linear-gradient(135deg,#e0f2fe 0%,#fff 45%,#fff7ed 100%) fixed;
+  min-height:100dvh;
+  padding:12px 12px 36px;
+  color:var(--g900);font-size:14px;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+}
+.wrap{max-width:480px;margin:0 auto}
 
-  .container { max-width: 480px; margin: 0 auto; }
+/* ── Header ──────────────────────────────────── */
+.hdr{text-align:center;margin-bottom:14px}
+.hdr h1{font-size:21px;font-weight:900}
+.hdr p{font-size:11px;color:var(--g500);margin-top:3px}
 
-  /* Header */
-  .header { text-align: center; margin-bottom: 12px; }
-  .header h1 { font-size: 22px; font-weight: 900; color: var(--gray-900); }
-  .header p { font-size: 11px; color: var(--gray-500); margin-top: 3px; }
+/* ── Tabs ────────────────────────────────────── */
+.tabs{
+  display:flex;gap:6px;
+  overflow-x:auto;overflow-y:hidden;
+  padding-bottom:4px;margin-bottom:10px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;scrollbar-color:#cbd5e1 transparent;
+}
+.tabs::-webkit-scrollbar{height:3px}
+.tabs::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:2px}
 
-  /* Alert Banner */
-  .alert-banner {
-    margin-bottom: 10px;
-    background: linear-gradient(to right, #fef2f2, #fffbeb);
-    border: 1px solid #fca5a5;
-    border-radius: 12px;
-    padding: 10px 12px;
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
-  }
-  .alert-banner .icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
-  .alert-banner .title { font-size: 11px; font-weight: 700; color: #7f1d1d; }
-  .alert-banner .body { font-size: 11px; color: #991b1b; margin-top: 3px; }
+.tab{
+  flex-shrink:0;
+  border-radius:var(--r);padding:8px 11px;
+  text-align:left;
+  border:1px solid var(--g200);background:#fff;color:var(--g600);
+  transition:background .15s,border-color .15s,color .15s,box-shadow .15s;
+  user-select:none;
+}
+.tab:active{opacity:.85}
+.tab .tt{font-size:12px;font-weight:700;display:block}
+.tab .td{font-size:10px;opacity:.8;display:block;margin-top:1px}
+.tab .ts{font-size:10px;opacity:.6;display:block;margin-top:1px}
+.tab.on{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 4px 12px var(--blue-s)}
+.tab.map-tab{border-color:var(--teal-s);color:var(--teal)}
+.tab.map-tab.on{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 4px 12px var(--teal-s)}
 
-  /* Multi-faith banner */
-  .faith-banner {
-    margin-bottom: 10px;
-    background: linear-gradient(to right, #ecfeff, #fffbeb, #fefce8);
-    border: 1px solid #a5f3fc;
-    border-radius: 12px;
-    padding: 10px 12px;
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
-  }
-  .faith-banner .icon { font-size: 16px; flex-shrink: 0; }
-  .faith-banner .title { font-size: 11px; font-weight: 700; color: #164e63; }
-  .faith-banner .body { font-size: 11px; color: #0e7490; margin-top: 3px; }
+/* ── Panels ──────────────────────────────────── */
+.panel{display:none}
+.panel.on{display:block;animation:fu .2s ease both}
+@keyframes fu{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 
-  /* Toggle Buttons */
-  .toggle-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
-  .toggle-btn {
-    font-family: 'Noto Sans HK', sans-serif;
-    font-size: 11px;
-    padding: 6px 12px;
-    border-radius: 999px;
-    border: 1px solid var(--gray-200);
-    background: white;
-    color: var(--gray-600);
-    cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
-  }
-  .toggle-btn:hover { border-color: #93c5fd; }
-  .toggle-btn.active-red { background: #dc2626; color: white; border-color: #dc2626; }
-  .toggle-btn.active-blue { background: var(--blue); color: white; border-color: var(--blue); }
+/* ── Day header card ─────────────────────────── */
+.dhdr{background:#fff;border:1px solid var(--g200);border-radius:var(--r);padding:12px;margin-bottom:10px}
+.dhdr h2{font-size:16px;font-weight:700}
+.dhdr .sub{font-size:11px;color:var(--g500);margin-top:2px}
+.qpill{
+  display:inline-block;margin-top:8px;
+  padding:4px 10px;border-radius:var(--rs);
+  font-size:11px;font-weight:600;border:1px solid
+}
+.qpill.red{background:var(--red-bg);border-color:var(--red-s);color:var(--red)}
+.qpill.yel{background:var(--amber-bg);border-color:var(--amber-s);color:var(--amber)}
+.qpill.grn{background:var(--green-bg);border-color:var(--green-s);color:var(--green)}
+.dnote{display:flex;gap:8px;margin-top:8px;padding:8px;border-radius:var(--rs);background:var(--amber-bg);border:1px solid var(--amber-s);font-size:11px;color:#92400e;line-height:1.5}
+.dnote .ni{flex-shrink:0}
 
-  /* Collapsible panels */
-  .panel {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    opacity: 0;
-    margin-bottom: 0;
-  }
-  .panel.open { max-height: 1000px; opacity: 1; margin-bottom: 10px; }
+/* faith strip */
+.fstrip{
+  margin-bottom:10px;padding:10px 12px;
+  border-radius:var(--r);border:1px solid #67e8f9;
+  background:linear-gradient(to right,#cffafe,#fef9c3,#fef3c7)
+}
+.fstrip .fst{font-size:11px;font-weight:700;margin-bottom:5px}
+.ftags{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.ftag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px}
+.ftag.thai{background:#fde68a;color:#78350f}
+.ftag.myan{background:#fef08a;color:#713f12}
+.ftag.mosq{background:#a5f3fc;color:#164e63}
+.fstrip .fn{font-size:10px;color:var(--g500);margin-top:5px}
 
-  .panel-inner {
-    background: white;
-    border: 1px solid var(--gray-200);
-    border-radius: 12px;
-    padding: 12px;
-  }
-  .panel-inner.blue { border-color: #bfdbfe; }
-  .panel-title { font-size: 11px; font-weight: 700; color: var(--gray-800); margin-bottom: 8px; }
+/* ── Timeline ────────────────────────────────── */
+.tl{position:relative}
+.ev{position:relative;padding-left:26px;padding-bottom:8px}
+.ev::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--g200)}
+.dot{position:absolute;left:4px;top:10px;width:10px;height:10px;border-radius:50%;border:2px solid #fff;background:var(--g400);z-index:1}
+.dot.hi  {background:var(--red);box-shadow:0 0 0 3px #fecaca}
+.dot.must{background:var(--red)}
+.dot.imp {background:#f59e0b}
+.dot.hid {background:var(--em)}
 
-  .qm-row {
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
-    padding: 7px 8px;
-    border-radius: 8px;
-    margin-bottom: 6px;
-  }
-  .qm-row:last-child { margin-bottom: 0; }
-  .qm-row .label { font-size: 11px; font-weight: 700; white-space: nowrap; }
-  .qm-row .desc { font-size: 11px; }
-  .qm-row.high { background: #fef2f2; border: 1px solid #fca5a5; color: #dc2626; }
-  .qm-row.medium { background: #fefce8; border: 1px solid #fde047; color: #a16207; }
-  .qm-row.none { background: #f0fdf4; border: 1px solid #86efac; color: #166534; }
+/* cards */
+.ec{
+  border-radius:var(--r);border:1px solid var(--g200);background:#fff;overflow:hidden;
+  transition:box-shadow .15s;
+}
+.ec:active{box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.ec.hi{border-color:var(--red-s);box-shadow:0 2px 6px rgba(239,68,68,.1)}
+.ec.sight  {background:#eff6ff;border-color:#bfdbfe}
+.ec.food   {background:#fff7ed;border-color:#fed7aa}
+.ec.trans  {background:var(--g50);border-color:var(--g200)}
+.ec.rest   {background:#faf5ff;border-color:#e9d5ff}
+.ec.special{background:#fdf2f8;border-color:#fbcfe8}
 
-  .strategy-row { display: flex; gap: 8px; font-size: 11px; color: #1d4ed8; margin-bottom: 6px; }
-  .strategy-row .day-label { font-weight: 700; flex-shrink: 0; width: 36px; }
+.ec-hdr{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:8px;padding:8px 10px;
+  -webkit-user-select:none;user-select:none;
+}
+.etags{display:flex;align-items:center;gap:4px;flex-wrap:wrap;flex:1;min-width:0}
+.tbadge{
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;
+  color:var(--g500);background:#fff;padding:1px 5px;border-radius:4px;
+  flex-shrink:0;white-space:nowrap
+}
+.elbl{font-size:12px;font-weight:600;color:var(--g800)}
+.tier{font-size:10px;padding:1px 6px;border-radius:999px;font-weight:500;border:1px solid;white-space:nowrap}
+.tier.must{background:var(--red-bg);color:var(--red);border-color:var(--red-s)}
+.tier.imp {background:var(--amber-bg);color:var(--amber);border-color:var(--amber-s)}
+.tier.hid {background:var(--em-bg);color:var(--em);border-color:var(--em-s)}
+.qd{font-size:10px;padding:1px 5px;border-radius:999px;border:1px solid;white-space:nowrap}
+.qd.hi  {background:var(--red-bg);color:var(--red);border-color:var(--red-s)}
+.qd.med {background:var(--amber-bg);color:var(--amber);border-color:var(--amber-s)}
+.qd.none{background:var(--green-bg);color:var(--green);border-color:var(--green-s)}
+.dur{font-size:10px;color:var(--g400);white-space:nowrap}
+.chev{font-size:11px;color:var(--g400);flex-shrink:0;transition:transform .2s}
+.ec.open .chev{transform:rotate(180deg)}
 
-  .strategy-note {
-    margin-top: 8px;
-    padding: 8px;
-    background: #ecfeff;
-    border: 1px solid #a5f3fc;
-    border-radius: 8px;
-    font-size: 11px;
-    color: #0e7490;
-  }
-  .strategy-food {
-    margin-top: 6px;
-    padding: 8px;
-    background: #fffbeb;
-    border: 1px solid #fde68a;
-    border-radius: 8px;
-    font-size: 11px;
-    color: #92400e;
-  }
+/* CSS grid trick — animates height without JS layout writes */
+.eb-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .22s ease}
+.ec.open .eb-wrap{grid-template-rows:1fr}
+.eb{overflow:hidden}
+.eb-in{padding:0 10px 10px;border-top:1px solid rgba(0,0,0,.05)}
+.edesc{font-size:11px;color:var(--g600);line-height:1.6;margin-top:6px}
+.qnote{margin-top:6px;font-size:10px;padding:4px 8px;border-radius:var(--rxs);border:1px solid}
+.qnote.hi  {background:var(--red-bg);color:var(--red);border-color:var(--red-s)}
+.qnote.med {background:var(--amber-bg);color:var(--amber);border-color:var(--amber-s)}
+.qnote.none{background:var(--green-bg);color:var(--green);border-color:var(--green-s)}
 
-  /* Day Tabs */
-  .day-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 10px; }
-  .day-tabs::-webkit-scrollbar { height: 3px; }
-  .day-tabs::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+/* ── Map ─────────────────────────────────────── */
+.map-wrap{
+  position:relative;border-radius:var(--r);overflow:hidden;
+  border:1px solid var(--g200);
+  height:70dvh;min-height:340px;background:#e2e8f0
+}
+.map-wrap iframe{width:100%;height:100%;border:none;display:block}
+.map-ldr{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;
+  background:#f8fafc;transition:opacity .35s;pointer-events:none
+}
+.map-ldr.fade{opacity:0}
+.map-ldr.gone{display:none}
+.spin{width:30px;height:30px;border-radius:50%;border:3px solid var(--g200);border-top-color:#06b6d4;animation:sp .75s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.map-ldr p{font-size:11px;color:var(--g400)}
+.map-err{
+  display:none;position:absolute;inset:0;
+  flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;padding:24px;text-align:center;background:#f8fafc
+}
+.map-err.show{display:flex}
+.map-err .emo{font-size:32px}
+.map-err p{font-size:12px;color:var(--g500);line-height:1.5}
+.map-hint{font-size:11px;color:var(--g500);text-align:center;margin-top:8px}
 
-  .day-tab {
-    flex-shrink: 0;
-    border-radius: 12px;
-    padding: 8px 12px;
-    text-align: left;
-    cursor: pointer;
-    border: 1px solid var(--gray-200);
-    background: white;
-    color: var(--gray-600);
-    transition: all 0.2s;
-    font-family: 'Noto Sans HK', sans-serif;
-  }
-  .day-tab:hover { border-color: #93c5fd; }
-  .day-tab.active { background: var(--blue); color: white; border-color: var(--blue); box-shadow: 0 4px 12px #93c5fd; }
-  .day-tab .tab-emoji { font-size: 12px; font-weight: 700; display: block; }
-  .day-tab .tab-date { font-size: 11px; opacity: 0.85; display: block; }
-  .day-tab .tab-status { font-size: 10px; opacity: 0.65; display: block; margin-top: 2px; }
-
-  /* Day Content */
-  .day-content { display: none; }
-  .day-content.active { display: block; animation: fadeIn 0.2s ease; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-  /* Day Header Card */
-  .day-header-card {
-    background: white;
-    border: 1px solid var(--gray-200);
-    border-radius: 12px;
-    padding: 12px;
-    margin-bottom: 10px;
-  }
-  .day-header-card h2 { font-size: 17px; font-weight: 700; color: var(--gray-900); }
-  .day-header-card .subtitle { font-size: 11px; color: var(--gray-500); margin-top: 2px; }
-  .qm-status {
-    margin-top: 8px;
-    padding: 6px 10px;
-    border-radius: 8px;
-    font-size: 11px;
-    font-weight: 600;
-    border: 1px solid;
-  }
-  .qm-status.red { background: #fef2f2; border-color: #fca5a5; color: #dc2626; }
-  .qm-status.yellow { background: #fefce8; border-color: #fde047; color: #a16207; }
-  .qm-status.green { background: #f0fdf4; border-color: #86efac; color: #166534; }
-
-  .day-note {
-    margin-top: 8px;
-    display: flex;
-    gap: 8px;
-    background: #fffbeb;
-    border: 1px solid #fde68a;
-    border-radius: 8px;
-    padding: 8px;
-    font-size: 11px;
-    color: #92400e;
-  }
-  .day-note .note-icon { flex-shrink: 0; }
-
-  /* Multi-faith Day Banner */
-  .faith-day-banner {
-    margin-bottom: 10px;
-    background: linear-gradient(to right, #cffafe, #fef9c3, #fef3c7);
-    border: 1px solid #67e8f9;
-    border-radius: 12px;
-    padding: 10px 12px;
-  }
-  .faith-day-banner .title { font-size: 11px; font-weight: 700; color: var(--gray-800); margin-bottom: 6px; }
-  .faith-tags { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-  .faith-tag { font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 999px; }
-  .faith-tag.thai { background: #fde68a; color: #78350f; }
-  .faith-tag.myanmar { background: #fef08a; color: #713f12; }
-  .faith-tag.mosque { background: #a5f3fc; color: #164e63; }
-  .faith-day-banner .note { font-size: 10px; color: var(--gray-500); margin-top: 6px; }
-
-  /* Timeline */
-  .timeline { position: relative; }
-
-  .event-item { position: relative; padding-left: 28px; padding-bottom: 10px; }
-
-  .event-item::before {
-    content: '';
-    position: absolute;
-    left: 9px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--gray-200);
-  }
-
-  .event-dot {
-    position: absolute;
-    left: 5px;
-    top: 10px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: 2px solid white;
-    background: var(--gray-400);
-    z-index: 1;
-  }
-  .event-dot.highlight { background: var(--red); box-shadow: 0 0 0 3px #fecaca; }
-  .event-dot.tier-must { background: var(--red); }
-  .event-dot.tier-important { background: var(--amber); }
-  .event-dot.tier-hidden { background: var(--emerald); }
-
-  .event-card {
-    border-radius: 12px;
-    border: 1px solid var(--gray-200);
-    background: white;
-    overflow: hidden;
-    cursor: pointer;
-    transition: box-shadow 0.15s;
-  }
-  .event-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-  .event-card.highlight { border-color: #fca5a5; box-shadow: 0 2px 8px rgba(239,68,68,0.15); }
-
-  /* Type backgrounds */
-  .event-card.type-sight { background: #eff6ff; border-color: #bfdbfe; }
-  .event-card.type-food { background: #fff7ed; border-color: #fed7aa; }
-  .event-card.type-transport { background: var(--gray-50); border-color: var(--gray-200); }
-  .event-card.type-rest { background: #faf5ff; border-color: #e9d5ff; }
-  .event-card.type-special { background: #fdf2f8; border-color: #fbcfe8; }
-
-  .event-header { padding: 10px 12px; display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
-  .event-tags { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
-
-  .time-badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--gray-500);
-    background: white;
-    padding: 2px 6px;
-    border-radius: 4px;
-    flex-shrink: 0;
-  }
-  .event-label { font-size: 13px; font-weight: 600; color: var(--gray-800); }
-
-  .tier-badge {
-    font-size: 10px;
-    padding: 2px 6px;
-    border-radius: 999px;
-    font-weight: 500;
-    border: 1px solid;
-    white-space: nowrap;
-  }
-  .tier-badge.must { background: #fef2f2; color: #dc2626; border-color: #fca5a5; }
-  .tier-badge.important { background: #fffbeb; color: #b45309; border-color: #fde68a; }
-  .tier-badge.hidden { background: #ecfdf5; color: #065f46; border-color: #6ee7b7; }
-
-  .qm-dot {
-    font-size: 10px;
-    padding: 2px 6px;
-    border-radius: 999px;
-    border: 1px solid;
-    white-space: nowrap;
-  }
-  .qm-dot.high { background: #fef2f2; color: #dc2626; border-color: #fca5a5; }
-  .qm-dot.medium { background: #fefce8; color: #a16207; border-color: #fde047; }
-  .qm-dot.none { background: #f0fdf4; color: #166534; border-color: #86efac; }
-
-  .duration-badge { font-size: 10px; color: var(--gray-400); display: flex; align-items: center; gap: 3px; }
-  .chevron { font-size: 12px; color: var(--gray-400); flex-shrink: 0; transition: transform 0.2s; }
-  .event-card.open .chevron { transform: rotate(180deg); }
-
-  .event-body {
-    display: none;
-    padding: 0 12px 10px;
-    border-top: 1px solid rgba(0,0,0,0.05);
-    margin-top: 2px;
-  }
-  .event-card.open .event-body { display: block; }
-
-  .event-desc { font-size: 11px; color: var(--gray-600); line-height: 1.6; margin-top: 6px; }
-
-  .qm-note {
-    margin-top: 6px;
-    font-size: 10px;
-    padding: 5px 8px;
-    border-radius: 6px;
-    border: 1px solid;
-  }
-  .qm-note.high { background: #fef2f2; color: #dc2626; border-color: #fca5a5; }
-  .qm-note.medium { background: #fefce8; color: #a16207; border-color: #fde047; }
-  .qm-note.none { background: #f0fdf4; color: #166534; border-color: #86efac; }
-
-  /* Summary Cards */
-  .summary-card {
-    margin-top: 14px;
-    border-radius: 12px;
-    padding: 12px;
-    border: 1px solid var(--gray-200);
-  }
-  .summary-card.qm-summary { background: linear-gradient(to right, #fef2f2, #fffbeb, #f0fdf4); }
-  .summary-card.faith-summary { background: linear-gradient(to right, #ecfeff, #fffbeb, #fefce8); }
-  .summary-card.legend { background: white; }
-
-  .summary-title { font-size: 11px; font-weight: 700; color: var(--gray-800); margin-bottom: 8px; }
-
-  .summary-row { display: flex; align-items: flex-start; gap: 8px; font-size: 11px; margin-bottom: 6px; }
-  .summary-row .day-lbl { font-weight: 700; flex-shrink: 0; width: 52px; }
-  .summary-row .day-lbl.green { color: #166534; }
-  .summary-row .day-lbl.yellow { color: #a16207; }
-  .summary-row .day-lbl.red { color: #dc2626; }
-  .summary-row .day-body { color: var(--gray-600); }
-
-  .faith-summary-row { display: flex; align-items: flex-start; gap: 8px; font-size: 11px; margin-bottom: 6px; }
-  .faith-summary-row .icon { font-size: 15px; flex-shrink: 0; }
-  .faith-summary-row .name { font-weight: 700; }
-  .faith-summary-row .desc { color: var(--gray-500); }
-
-  .legend-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
-  .legend-item {
-    font-size: 10px;
-    padding: 3px 8px;
-    border-radius: 999px;
-    border: 1px solid;
-  }
-  .legend-item.must { background: #fef2f2; color: #dc2626; border-color: #fca5a5; }
-  .legend-item.important { background: #fffbeb; color: #b45309; border-color: #fde68a; }
-  .legend-item.hidden { background: #ecfdf5; color: #065f46; border-color: #6ee7b7; }
-  .legend-item.high { background: #fef2f2; color: #dc2626; border-color: #fca5a5; }
-  .legend-item.medium { background: #fefce8; color: #a16207; border-color: #fde047; }
-  .legend-item.none { background: #f0fdf4; color: #166534; border-color: #86efac; }
-  .legend-hint { font-size: 10px; color: var(--gray-400); margin-top: 6px; }
+/* ── Summary ─────────────────────────────────── */
+.sc{margin-top:12px;border-radius:var(--r);padding:12px;border:1px solid var(--g200)}
+.sc.qm {background:linear-gradient(to right,var(--red-bg),var(--amber-bg),var(--green-bg))}
+.sc.leg{background:#fff}
+.stit{font-size:11px;font-weight:700;color:var(--g800);margin-bottom:8px}
+.srow{display:flex;align-items:baseline;gap:8px;font-size:11px;margin-bottom:5px}
+.srow .lbl{font-weight:700;flex-shrink:0;width:52px}
+.srow .lbl.g{color:var(--green)}.srow .lbl.y{color:var(--amber)}.srow .lbl.r{color:var(--red)}
+.srow .bd{color:var(--g600)}
+.lgw{display:flex;flex-wrap:wrap;gap:5px}
+.lg{font-size:10px;padding:2px 7px;border-radius:999px;border:1px solid}
+.lg.must{background:var(--red-bg);color:var(--red);border-color:var(--red-s)}
+.lg.imp {background:var(--amber-bg);color:var(--amber);border-color:var(--amber-s)}
+.lg.hid {background:var(--em-bg);color:var(--em);border-color:var(--em-s)}
+.lg.hi  {background:var(--red-bg);color:var(--red);border-color:var(--red-s)}
+.lg.med {background:var(--amber-bg);color:var(--amber);border-color:var(--amber-s)}
+.lg.none{background:var(--green-bg);color:var(--green);border-color:var(--green-s)}
+/* ── Currency Calculator ─────────────────────── */
+.calc-wrap{
+  display:flex;align-items:center;gap:8px;
+  margin-top:10px;padding:10px 12px;
+  background:#fff;border-radius:var(--rs);border:1px solid #bfdbfe
+}
+.calc-field{display:flex;flex-direction:column;flex:1;min-width:0}
+.calc-field label{font-size:10px;font-weight:700;color:var(--g500);margin-bottom:3px;letter-spacing:.4px}
+.calc-field input{
+  font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;
+  color:var(--g800);background:var(--g50);
+  border:1px solid var(--g200);border-radius:var(--rxs);
+  padding:6px 8px;width:100%;outline:none;
+  transition:border-color .15s
+}
+.calc-field input:focus{border-color:#60a5fa}
+.calc-arrow{font-size:16px;color:var(--g400);flex-shrink:0;user-select:none}
+.calc-note{font-size:10px;color:var(--g400);margin-top:5px}
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
 
-  <!-- Header -->
-  <div class="header">
-    <h1>🇲🇾 檳城 4日行程</h1>
-    <p>Apr 3 00:25 → Apr 6 16:00 · 清明特別版</p>
+<!-- Header -->
+<div class="hdr">
+  <h1>🇲🇾 檳城 4日行程</h1>
+  <p>Apr 3 00:25 → Apr 6 16:25 · 清明特別版</p>
+</div>
+
+<!-- Tabs -->
+<div class="tabs" role="tablist">
+  <button class="tab on"      role="tab" aria-selected="true"  onclick="sw('d0',this)"><span class="tt">🏛️ Day 1</span><span class="td">Apr 3 (Fri)</span><span class="ts">🟢 正常</span></button>
+  <button class="tab"         role="tab" aria-selected="false" onclick="sw('d1',this)"><span class="tt">⛰️ Day 2</span><span class="td">Apr 4 (Sat)</span><span class="ts">🟡 前夕</span></button>
+  <button class="tab"         role="tab" aria-selected="false" onclick="sw('d2',this)"><span class="tt">🎨 Day 3</span><span class="td">Apr 5 (Sun)</span><span class="ts">🔴 清明</span></button>
+  <button class="tab"         role="tab" aria-selected="false" onclick="sw('d3',this)"><span class="tt">✈️ Day 4</span><span class="td">Apr 6 (Mon)</span><span class="ts">🟢 16:25✈️</span></button>
+  <button class="tab"         role="tab" aria-selected="false" onclick="sw('info',this)"><span class="tt">💡 實用</span><span class="td">懶人包</span><span class="ts">ℹ️ 必備</span></button>
+  <button class="tab map-tab" role="tab" aria-selected="false" onclick="sw('mp',this)"><span class="tt">🍜 食圖</span><span class="td">飲食地圖</span><span class="ts">🗺️ 餐廳</span></button>
+</div>
+
+<!-- ══ DAY 1 ══ -->
+<div class="panel on" id="d0" role="tabpanel">
+  <div class="dhdr">
+    <h2>🏛️ 喬治市核心 Heritage Walk</h2>
+    <div class="sub">Good Friday · 凌晨到達 · 清明前兩日，一切正常</div>
+    <span class="qpill grn">🟢 清明前兩日 — 寺廟宗祠人流正常</span>
+    <div class="dnote"><span class="ni">⚠️</span><span>距離清明正日仲有2日，華人廟宇宗祠未受影響，係最佳窗口去 Khoo Kongsi、觀音亭同姓氏橋！</span></div>
   </div>
+  <div class="tl">
 
-  <!-- Alert Banner -->
-  <div class="alert-banner">
-    <div class="icon">⚠️</div>
-    <div>
-      <div class="title">⚠️ 清明節 4月5日（日）正日落喺你行程 Day 3！</div>
-      <div class="body">馬來西亞華人非常重視清明，清明前嘅週末（4/4-5）係掃墓高峰。行程已優化避開衝突！</div>
-    </div>
+    <div class="ev"><div class="dot"></div>
+    <div class="ec trans" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">00:25</span><span class="elbl">✈️ 抵達檳城機場</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">Grab 去酒店，車程約 30min</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec rest" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">01:00</span><span class="elbl">🏨 Check-in & 休息</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">好好瞓一覺，養足精神</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec food" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">10:30</span><span class="elbl">🍳 早午餐 Brunch</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">你地有list，出發前食飽</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot must"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">11:30</span><span class="elbl">Armenian Street 亞美尼亞街</span><span class="tier must">🔥 必去</span><span class="qd none">🟢</span><span class="dur">⏱ 45min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">壁畫集中地！「姐弟共騎」就喺度。街兩旁有文青小店、手作攤檔。</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot must"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">12:15</span><span class="elbl">Street Art Trail 壁畫路線</span><span class="tier must">🔥 必去</span><span class="qd none">🟢</span><span class="dur">⏱ 45min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">Armenian St → Ah Quee St → Cannon St → Muntri St，鐵線畫 + 牆壁畫混合路線。</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec food" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">13:00</span><span class="elbl">🍜 午餐</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">你地有list</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot hi"></div>
+    <div class="ec sight hi" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">14:00</span><span class="elbl">Khoo Kongsi 邱公司</span><span class="tier must">🔥 必去</span><span class="qd hi">🔴</span><span class="dur">⏱ 45min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">⚡ 趁清明前嚟！清明期間邱氏族人可能聚集祭祖。今日係最佳參觀時機。全馬最精美宗祠，入場費 RM10。</p><div class="qnote hi">🔴 清明高影響 — 清明期間宗族聚集祭祖，今日去最好</div></div></div></div></div></div>
+
+    <div class="ev"><div class="dot imp"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">14:50</span><span class="elbl">Little India 小印度</span><span class="tier imp">⭐ 重要</span><span class="qd none">🟢</span><span class="dur">⏱ 20min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">色彩繽紛嘅印度街區，不受清明影響。</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot imp"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">15:15</span><span class="elbl">Kapitan Keling Mosque</span><span class="tier imp">⭐ 重要</span><span class="qd none">🟢</span><span class="dur">⏱ 15min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">檳城最大清真寺，Mughal 風格。不受清明影響。</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec food" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">15:30</span><span class="elbl">☕ Coffee Time</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">你地有list</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot imp"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">16:15</span><span class="elbl">觀音亭 Goddess of Mercy Temple</span><span class="tier imp">⭐ 重要</span><span class="qd hi">🔴</span><span class="dur">⏱ 15min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">⚡ 趁清明前嚟！清明正日（4/5）香火極盛、人潮洶湧。今日人流正常，最佳參觀窗口。檳城最古老華人廟宇（1728年）。</p><div class="qnote hi">🔴 清明高影響 — 清明正日人潮極多，今日去最好</div></div></div></div></div></div>
+
+    <div class="ev"><div class="dot imp"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">16:35</span><span class="elbl">Fort Cornwallis 康華利堡</span><span class="tier imp">⭐ 重要</span><span class="qd none">🟢</span><span class="dur">⏱ 30min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">英殖時期堡壘，不受清明影響。入場費 RM20。</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot hi"></div>
+    <div class="ec sight hi" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">17:15</span><span class="elbl">Clan Jetties 姓氏橋</span><span class="tier must">🔥 必去</span><span class="qd hi">🔴</span><span class="dur">⏱ 45min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">⚡ 趁清明前嚟！水上華人聚落，清明期間族人回來祭祖。今日正常運作，日落時份最靚。</p><div class="qnote hi">🔴 清明高影響 — 清明期間華人氏族聚集祭祖，今日觀光最佳</div></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec special" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">18:00</span><span class="elbl">🌅 日落 Sunset @ 姓氏橋</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">留喺 Clan Jetties 睇日落</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec food" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">19:00</span><span class="elbl">🍽️ 晚餐</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">你地有list</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot hid"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">20:00</span><span class="elbl">Love Lane / Armenian St 夜遊</span><span class="tier hid">💎 Hidden</span><span class="qd none">🟢</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">夜晚壁畫街又有另一種氛圍。</p></div></div></div></div></div>
+
   </div>
+</div>
 
-  <!-- Multi-faith Banner -->
-  <div class="faith-banner">
-    <div class="icon">🕌🛕🏛️</div>
-    <div>
-      <div class="title">Day 2 新增：檳城多元宗教巡禮</div>
-      <div class="body">海上清真寺 → 臥佛寺（泰佛寺）→ 緬甸佛寺 — 三大宗教聖地一次走完！全部不受清明影響 ✅</div>
-    </div>
+<!-- ══ DAY 2 ══ -->
+<div class="panel" id="d1" role="tabpanel">
+  <div class="dhdr">
+    <h2>⛰️ 極樂寺 + 升旗山 + 多元宗教巡禮</h2>
+    <div class="sub">⚠️ 清明前一日（週六）· 掃墓高峰期開始 · 下午三大宗教聖地</div>
+    <span class="qpill yel">🟡 清明前一日週末 — 華人開始掃墓</span>
+    <div class="dnote"><span class="ni">⚠️</span><span>清明前嘅週末係掃墓高峰！Kek Lok Si 設有骨灰塔，拜祭人流會增加。務必 8:30 開門即到！下午泰佛寺、緬甸佛寺、海上清真寺 — 全部不受清明影響 ✅</span></div>
   </div>
-
-  <!-- Toggle Buttons -->
-  <div class="toggle-row">
-    <button class="toggle-btn" id="btnQm" onclick="togglePanel('qm', this, 'active-red')">🔴🟡🟢 清明影響圖例</button>
-    <button class="toggle-btn" id="btnStrategy" onclick="togglePanel('strategy', this, 'active-blue')">🧠 排期策略解析</button>
+  <div class="fstrip">
+    <div class="fst">🕌🛕🏛️ 今日亮點：多元宗教巡禮路線</div>
+    <div class="ftags"><span class="ftag thai">🛕 臥佛寺</span><span>→</span><span class="ftag myan">🏛️ 緬甸佛寺</span><span>→</span><span class="ftag mosq">🕌 海上清真寺</span></div>
+    <div class="fn">伊斯蘭教、泰國佛教、緬甸佛教三大宗教一次感受！全部 🟢 不受清明影響。</div>
   </div>
+  <div class="tl">
 
-  <!-- QM Guide Panel -->
-  <div class="panel" id="panel-qm">
-    <div class="panel-inner">
-      <div class="panel-title">清明節影響分級：</div>
-      <div class="qm-row high"><span class="label">🔴 清明高影響</span><span class="desc">寺廟/宗祠/華人聚落 — 清明期間人潮極多</span></div>
-      <div class="qm-row medium"><span class="label">🟡 清明中影響</span><span class="desc">華人營運設施 — 部分可能休息或較早關門</span></div>
-      <div class="qm-row none"><span class="label">🟢 清明無影響</span><span class="desc">博物館/西式建築/自然景點/非華人宗教 — 不受影響</span></div>
-    </div>
+    <div class="ev"><div class="dot"></div>
+    <div class="ec food" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">07:30</span><span class="elbl">🍳 早餐</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">你地有list — 食飽即出發！今日要搶早</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec trans" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">08:00</span><span class="elbl">🚕 出發去 Air Itam</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">⚡ 要搶早！Grab 約 20min</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot hi"></div>
+    <div class="ec sight hi" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">08:30</span><span class="elbl">Kek Lok Si 極樂寺</span><span class="tier must">🔥 必去</span><span class="qd hi">🔴</span><span class="dur">⏱ 2hr</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">⚠️ 清明影響：設有骨灰塔，今日華人會來拜祭先人。8:30 開門即入！掃墓高峰 9–11am，盡量喺 10:30 前完成主要參觀。坐 Inclined Lift 上頂睇觀音像先，再行落嚟。</p><div class="qnote hi">🔴 清明高影響 — 骨灰塔所在地，清明前後拜祭人流大增</div></div></div></div></div></div>
+
+    <div class="ev"><div class="dot hid"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">10:30</span><span class="elbl">Air Itam Market 周邊</span><span class="tier hid">💎 Hidden</span><span class="qd med">🟡</span><span class="dur">⏱ 20min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">極樂寺山腳本地市場，清明期間更加熱鬧，可能見到祭品攤檔。</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec food" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">11:00</span><span class="elbl">🍜 午餐</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">你地有list — Air Itam Laksa 超出名</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec trans" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">12:00</span><span class="elbl">🚶 步行去升旗山纜車站</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">由極樂寺行去約 1km / 15min</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot hi"></div>
+    <div class="ec sight hi" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">12:15</span><span class="elbl">Penang Hill 升旗山</span><span class="tier must">🔥 必去</span><span class="qd none">🟢</span><span class="dur">⏱ 2hr</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">纜車上 833m 山頂！自然景點，完全不受清明影響。山上涼爽，俯瞰全喬治市。提前網上買飛！</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec food" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">14:15</span><span class="elbl">☕ Coffee Time</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">你地有list — 山頂有 Café</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec trans" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">15:00</span><span class="elbl">🚃 纜車落山 → Grab 去 Lorong Burma</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">落山後 Grab 去 Lorong Burma（緬甸巷），約15min</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot imp"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">15:20</span><span class="elbl">Penang Botanic Gardens 植物園</span><span class="tier imp">⭐ 重要</span><span class="qd none">🟢</span><span class="dur">⏱ 30min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">免費入場，快速行一圈。不受清明影響。<br>⚠️ 植物園同臥佛寺距離約3km，需另叫 Grab（約10min）前往。</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec trans" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">15:55</span><span class="elbl">🚕 Grab 去 Lorong Burma</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">約10分鐘車程，前往多元宗教巡禮！</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot hi"></div>
+    <div class="ec sight hi" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">16:10</span><span class="elbl">🛕 臥佛寺 Wat Chayamangkalaram</span><span class="tier must">🔥 必去</span><span class="qd none">🟢</span><span class="dur">⏱ 25min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">✅ 泰國佛寺，不受清明影響！33公尺長臥佛像 — 世界第三大！建於1845年。佛身貼金箔，眼睛同腳指甲由貝殼鑲嵌。開放 08:00–17:00，免費入場。</p><div class="qnote none">🟢 泰國佛寺，清明無影響 ✅</div></div></div></div></div></div>
+
+    <div class="ev"><div class="dot hi"></div>
+    <div class="ec sight hi" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">16:35</span><span class="elbl">🏛️ 緬甸佛寺 Dhammikarama</span><span class="tier must">🔥 必去</span><span class="qd none">🟢</span><span class="dur">⏱ 25min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">✅ 就喺臥佛寺正對面！馬來西亞唯一緬甸佛寺，建於1800年，係檳城第一間佛寺。全金色塔式建築，供奉27公尺高釋迦牟尼佛像。免費入場。</p><div class="qnote none">🟢 緬甸佛寺，清明無影響 ✅</div></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec trans" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">17:05</span><span class="elbl">🚕 Grab 去 Tanjung Bungah</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">約10–15分鐘車程，前往海上清真寺</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot hi"></div>
+    <div class="ec sight hi" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">17:20</span><span class="elbl">🕌 海上清真寺 Floating Mosque</span><span class="tier must">🔥 必去</span><span class="qd none">🟢</span><span class="dur">⏱ 30min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">✅ 伊斯蘭清真寺，不受清明影響！建喺海上樁柱之上，漲潮時漂浮效果壯觀。免費入場，需穿著端莊，入內要脫鞋。<br><br>⚠️ <b>開放時間提醒：</b>非穆斯林入場時間為 09:00–13:00 及 15:00–17:30。建議到達前致電確認。</p><div class="qnote none">🟢 清明無影響 ✅</div></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec special" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">17:50</span><span class="elbl">🌅 海上清真寺日落</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">夕陽映照海上清真寺，金光灑落海面 — 全檳城最靚日落之一！</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec trans" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">18:30</span><span class="elbl">🚕 Grab 去 Gurney Drive</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">約10分鐘車程</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot imp"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">18:45</span><span class="elbl">Gurney Drive 海濱</span><span class="tier imp">⭐ 重要</span><span class="qd none">🟢</span><span class="dur">⏱ 15min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">沿海散步，不受清明影響。</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec food" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">19:00</span><span class="elbl">🍽️ 晚餐</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">你地有list — Gurney Drive 附近好多嘢食</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec rest" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">20:00</span><span class="elbl">自由活動 / 休息</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">行咗成日，休息下！今日由華人寺廟到泰佛寺、緬甸佛寺、伊斯蘭清真寺 — 真正感受檳城多元宗教魅力！</p></div></div></div></div></div>
+
   </div>
+</div>
 
-  <!-- Strategy Panel -->
-  <div class="panel" id="panel-strategy">
-    <div class="panel-inner blue">
-      <div class="panel-title" style="color:#1d4ed8;">🧠 清明排期策略：</div>
-      <div class="strategy-row"><span class="day-label">Day 1</span><span>🟢 4/3 距清明2日，華人廟宇宗祠正常 → Khoo Kongsi、觀音亭、姓氏橋</span></div>
-      <div class="strategy-row"><span class="day-label">Day 2</span><span>🟡 4/4 Kek Lok Si 搶早 → 升旗山 → 🕌🛕🏛️ 多元宗教巡禮（全不受清明影響）</span></div>
-      <div class="strategy-row"><span class="day-label">Day 3</span><span>🔴 4/5 清明正日 → 全日博物館 + 藝術空間 + 西式建築，零華人寺廟！</span></div>
-      <div class="strategy-row"><span class="day-label">Day 4</span><span>🟢 4/6 清明已過 → 一切正常，輕鬆收尾去機場</span></div>
-      <div class="strategy-note">🕌 <b>多元宗教巡禮（Day 2 下午）：</b>臥佛寺 + 緬甸佛寺（Lorong Burma，面對面）→ 海上清真寺（Tanjung Bungah，車程10min）— 伊斯蘭教、泰國佛教、緬甸佛教三大宗教一次感受！</div>
-      <div class="strategy-food">💡 <b>食店提醒：</b>4/5 清明正日部分華人食店因祭祖而休息。建議準備印度餐廳、馬來餐廳作 Plan B。</div>
-    </div>
+<!-- ══ DAY 3 ══ -->
+<div class="panel" id="d2" role="tabpanel">
+  <div class="dhdr">
+    <h2>🎨 博物館 + Hidden Gems 日</h2>
+    <div class="sub">🔴 清明節正日 · 全日避開華人寺廟宗祠</div>
+    <span class="qpill red">🔴 清明節正日 — 完全避開華人寺廟！</span>
+    <div class="dnote"><span class="ni">🔴</span><span>今日係清明節正日！行程已特意安排全日去博物館、西式建築、藝術空間 — 全部不受清明影響！部分華人食店可能因拜祭而休息。</span></div>
   </div>
+  <div class="tl">
 
-  <!-- Day Tabs -->
-  <div class="day-tabs">
-    <button class="day-tab active" onclick="switchDay(0, this)"><span class="tab-emoji">🏛️ Day 1</span><span class="tab-date">Apr 3 (Fri)</span><span class="tab-status">🟢 正常</span></button>
-    <button class="day-tab" onclick="switchDay(1, this)"><span class="tab-emoji">⛰️ Day 2</span><span class="tab-date">Apr 4 (Sat)</span><span class="tab-status">🟡 前夕</span></button>
-    <button class="day-tab" onclick="switchDay(2, this)"><span class="tab-emoji">🎨 Day 3</span><span class="tab-date">Apr 5 (Sun)</span><span class="tab-status">🔴 清明</span></button>
-    <button class="day-tab" onclick="switchDay(3, this)"><span class="tab-emoji">✈️ Day 4</span><span class="tab-date">Apr 6 (Mon)</span><span class="tab-status">🟢 正常</span></button>
+    <div class="ev"><div class="dot"></div>
+    <div class="ec food" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">08:30</span><span class="elbl">🍳 早餐</span><span class="qd med">🟡</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">⚠️ 部分華人食店可能因清明祭祖而休息，建議準備 Plan B（印度餐廳、馬來食店）</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot hi"></div>
+    <div class="ec sight hi" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">09:30</span><span class="elbl">藍屋 Cheong Fatt Tze Mansion</span><span class="tier must">🔥 必去</span><span class="qd none">🟢</span><span class="dur">⏱ 1hr</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">✅ 完美清明日選擇！西式管理博物館酒店，不受清明影響。靛藍色外牆極上鏡。導賞團 11am / 2pm / 3:30pm，RM17。<br><br>⚠️ <b>時間提醒：</b>09:30 到達時首個導賞團係 11am，建議先在外拍照或到附近食 Brunch 後返嚟。</p><div class="qnote none">🟢 博物館酒店，清明無影響 ✅</div></div></div></div></div></div>
+
+    <div class="ev"><div class="dot hi"></div>
+    <div class="ec sight hi" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">10:45</span><span class="elbl">僑生博物館 Pinang Peranakan Mansion</span><span class="tier must">🔥 必去</span><span class="qd none">🟢</span><span class="dur">⏱ 1hr</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">✅ 完美清明日選擇！私營博物館，不受影響。1000+件峇峇娘惹古董，RM25。</p><div class="qnote none">🟢 私營博物館，清明無影響 ✅</div></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec food" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">12:00</span><span class="elbl">🍜 午餐</span><span class="qd med">🟡</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">⚠️ 部分華人攤檔可能休息。建議去印度餐廳、馬來餐廳或連鎖店作 Plan B</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot hi"></div>
+    <div class="ec sight hi" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">13:00</span><span class="elbl">Hin Bus Depot Art Centre</span><span class="tier hid">💎 Hidden</span><span class="qd none">🟢</span><span class="dur">⏱ 45min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">✅ 藝術空間，不受清明影響。舊巴士站改建，有畫廊、壁畫。週日可能有 Pop-up Market！</p><div class="qnote none">🟢 藝術中心，清明無影響 ✅</div></div></div></div></div></div>
+
+    <div class="ev"><div class="dot hid"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">13:50</span><span class="elbl">Camera Museum 相機博物館</span><span class="tier hid">💎 Hidden</span><span class="qd none">🟢</span><span class="dur">⏱ 40min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">✅ 不受清明影響。幾百部古董相機，門票 RM25。</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot imp"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">14:30</span><span class="elbl">St. George's Church</span><span class="tier imp">⭐ 重要</span><span class="qd none">🟢</span><span class="dur">⏱ 15min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">✅ 東南亞最古老英國國教教堂（1818年）。Easter Sunday 當日可能有特別禮拜，建議到訪前確認是否對外開放。</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec food" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">15:00</span><span class="elbl">☕ Coffee Time</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">你地有list</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot imp"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">16:00</span><span class="elbl">KOMTAR Rainbow Skywalk</span><span class="tier imp">⭐ 重要</span><span class="qd none">🟢</span><span class="dur">⏱ 1hr</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">✅ 商業設施，不受清明影響。68樓高空玻璃棧道，360度鳥瞰全檳城。日落時分上去最正！門票約 RM68。</p><div class="qnote none">🟢 商業大樓，清明無影響 ✅</div></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec special" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">17:00</span><span class="elbl">🌅 KOMTAR 觀日落</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">68樓睇日落，全檳城盡收眼底</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">18:00</span><span class="elbl">補影壁畫 / 自由探索</span><span class="qd none">🟢</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">壁畫區不受清明影響，重返影 miss 咗嘅作品。</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot"></div>
+    <div class="ec food" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">19:00</span><span class="elbl">🍽️ 晚餐 — 最後一晚大餐</span><span class="qd med">🟡</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">⚠️ 部分華人食店可能休息，建議有 Plan B</p></div></div></div></div></div>
+
+    <div class="ev"><div class="dot hid"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">20:30</span><span class="elbl">Armenian St 夜市 / 最後散步</span><span class="tier hid">💎 Hidden</span><span class="qd none">🟢</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">週日夜晚，最後一晚感受喬治市。</p></div></div></div></div></div>
+
   </div>
+</div>
 
-  <!-- ========== DAY 1 ========== -->
-  <div class="day-content active" id="day-0">
-    <div class="day-header-card">
-      <h2>🏛️ 喬治市核心 Heritage Walk</h2>
-      <div class="subtitle">Good Friday · 凌晨到達 · 清明前兩日，一切正常</div>
-      <div class="qm-status green">🟢 清明前兩日 — 寺廟宗祠人流正常</div>
-      <div class="day-note"><span class="note-icon">⚠️</span><span>距離清明正日仲有2日，華人廟宇宗祠未受影響，係最佳窗口去 Khoo Kongsi、觀音亭同姓氏橋！</span></div>
-    </div>
-
-    <div class="timeline">
-      <!-- Events Day 1 -->
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-transport" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">00:25</span>
-              <span class="event-label">✈️ 抵達檳城機場</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">Grab 去酒店，車程約30min</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-rest" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">01:00</span>
-              <span class="event-label">🏨 Check-in & 休息</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">好好瞓一覺，養足精神</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-food" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">10:30</span>
-              <span class="event-label">🍳 早午餐 Brunch</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">你地有list，出發前食飽</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot tier-must"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">11:30</span>
-              <span class="event-label">Armenian Street 亞美尼亞街</span>
-              <span class="tier-badge must">🔥 必去</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 45min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">壁畫集中地！「姐弟共騎」就喺度。街兩旁有文青小店、手作攤檔。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot tier-must"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">12:15</span>
-              <span class="event-label">Street Art Trail 壁畫路線</span>
-              <span class="tier-badge must">🔥 必去</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 45min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">Armenian St → Ah Quee St → Cannon St → Muntri St，鐵線畫 + 牆壁畫混合路線。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-food" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">13:00</span>
-              <span class="event-label">🍜 午餐</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">你地有list</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot highlight"></div>
-        <div class="event-card type-sight highlight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">14:00</span>
-              <span class="event-label">Khoo Kongsi 邱公司</span>
-              <span class="tier-badge must">🔥 必去</span>
-              <span class="qm-dot high">🔴</span>
-              <span class="duration-badge">⏱ 45min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">⚡ 趁清明前嚟！清明期間邱氏族人可能聚集祭祖。今日（清明前2日）係最佳參觀時機。全馬最精美宗祠，入場費 RM10。</div>
-            <div class="qm-note high">🔴 清明高影響 — 清明期間宗族可能聚集祭祖，今日去最好</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot tier-important"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">14:50</span>
-              <span class="event-label">Little India 小印度</span>
-              <span class="tier-badge important">⭐ 重要</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 20min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">色彩繽紛嘅印度街區，不受清明影響。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot tier-important"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">15:15</span>
-              <span class="event-label">Kapitan Keling Mosque</span>
-              <span class="tier-badge important">⭐ 重要</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 15min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">檳城最大清真寺，Mughal 風格。不受清明影響。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-food" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">15:30</span>
-              <span class="event-label">☕ Coffee Time</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">你地有list</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot tier-important"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">16:15</span>
-              <span class="event-label">觀音亭 Goddess of Mercy Temple</span>
-              <span class="tier-badge important">⭐ 重要</span>
-              <span class="qm-dot high">🔴</span>
-              <span class="duration-badge">⏱ 15min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">⚡ 趁清明前嚟！清明正日（4/5）香火極盛、人潮洶湧。今日人流正常，最佳參觀窗口。檳城最古老華人廟宇（1728年）。</div>
-            <div class="qm-note high">🔴 清明高影響 — 清明正日人潮極多，今日去最好</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot tier-important"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">16:35</span>
-              <span class="event-label">Fort Cornwallis 康華利堡</span>
-              <span class="tier-badge important">⭐ 重要</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 30min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">英殖時期堡壘，不受清明影響。入場費 RM20。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot highlight"></div>
-        <div class="event-card type-sight highlight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">17:15</span>
-              <span class="event-label">Clan Jetties 姓氏橋</span>
-              <span class="tier-badge must">🔥 必去</span>
-              <span class="qm-dot high">🔴</span>
-              <span class="duration-badge">⏱ 45min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">⚡ 趁清明前嚟！水上華人聚落，清明期間族人回來祭祖。今日正常運作，日落時份最靚。</div>
-            <div class="qm-note high">🔴 清明高影響 — 清明期間華人氏族聚集祭祖，今日觀光最佳</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-special" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">18:00</span>
-              <span class="event-label">🌅 日落 Sunset @ 姓氏橋</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">留喺 Clan Jetties 睇日落</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-food" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">19:00</span>
-              <span class="event-label">🍽️ 晚餐</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">你地有list</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot tier-hidden"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">20:00</span>
-              <span class="event-label">Love Lane / Armenian St 夜遊</span>
-              <span class="tier-badge hidden">💎 Hidden</span>
-              <span class="qm-dot none">🟢</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">夜晚壁畫街又有另一種氛圍。</div>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- ══ DAY 4 ══ -->
+<div class="panel" id="d3" role="tabpanel">
+  <div class="dhdr">
+    <h2>✈️ 最後半日 → 機場</h2>
+    <div class="sub">週一 · 清明過後回復正常 · 16:25 起飛</div>
+    <span class="qpill grn">🟢 清明已過 — 一切回復正常</span>
+    <div class="dnote"><span class="ni">💡</span><span>清明已過，一切正常。16:25 起飛，最遲 13:55 要到機場！預留 2.5hr check-in + 過關。</span></div>
   </div>
+  <div class="tl">
 
-  <!-- ========== DAY 2 ========== -->
-  <div class="day-content" id="day-1">
-    <div class="day-header-card">
-      <h2>⛰️ 極樂寺 + 升旗山 + 多元宗教巡禮</h2>
-      <div class="subtitle">⚠️ 清明前一日（週六）· 掃墓高峰期開始 · 下午三大宗教聖地</div>
-      <div class="qm-status yellow">🟡 清明前一日週末 — 華人開始掃墓</div>
-      <div class="day-note"><span class="note-icon">⚠️</span><span>清明前嘅週末係馬來西亞華人掃墓高峰！Kek Lok Si 設有骨灰塔，拜祭人流會增加。務必 8:30 開門即到！下午安排泰佛寺、緬甸佛寺、海上清真寺 — 全部非華人宗教，完全不受清明影響，放心遊覽！</span></div>
-    </div>
+    <div class="ev"><div class="dot"></div>
+    <div class="ec food" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">08:00</span><span class="elbl">🍳 早餐</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">你地有list — 最後一餐檳城早餐！華人食店已回復正常。</p></div></div></div></div></div>
 
-    <div class="faith-day-banner">
-      <div class="title">🕌🛕🏛️ 今日亮點：多元宗教巡禮路線</div>
-      <div class="faith-tags">
-        <span class="faith-tag thai">🛕 臥佛寺</span>
-        <span>→</span>
-        <span class="faith-tag myanmar">🏛️ 緬甸佛寺</span>
-        <span>→</span>
-        <span class="faith-tag mosque">🕌 海上清真寺</span>
-      </div>
-      <div class="note">三座聖地展現檳城伊斯蘭教、泰國佛教、緬甸佛教和諧共存嘅多元文化！全部 🟢 不受清明影響。</div>
-    </div>
+    <div class="ev"><div class="dot hid"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">09:00</span><span class="elbl">🖼️ 最後壁畫巡禮 / 手信</span><span class="tier hid">💎 Hidden</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">行下 Armenian St / Lebuh Pantai 買手信，約45min</p></div></div></div></div></div>
 
-    <div class="timeline">
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-food" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">07:30</span>
-              <span class="event-label">🍳 早餐</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">你地有list — 食飽即出發！今日要搶早</div>
-          </div>
-        </div>
-      </div>
+    <div class="ev"><div class="dot"></div>
+    <div class="ec food" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">09:50</span><span class="elbl">☕ Last Coffee</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">你地有list — 最後一杯！</p></div></div></div></div></div>
 
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-transport" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">08:00</span>
-              <span class="event-label">🚕 出發去 Air Itam</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">⚡ 要搶早！Grab 約 20min</div>
-          </div>
-        </div>
-      </div>
+    <div class="ev"><div class="dot"></div>
+    <div class="ec trans" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">10:30</span><span class="elbl">🏨 Check-out & 執行李</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">收拾好行李準備出發。可寄存酒店或帶上 Grab。</p></div></div></div></div></div>
 
-      <div class="event-item">
-        <div class="event-dot highlight"></div>
-        <div class="event-card type-sight highlight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">08:30</span>
-              <span class="event-label">Kek Lok Si 極樂寺</span>
-              <span class="tier-badge must">🔥 必去</span>
-              <span class="qm-dot high">🔴</span>
-              <span class="duration-badge">⏱ 2hr</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">⚠️ 清明影響：設有骨灰塔，今日華人會來拜祭先人。8:30 開門即入！掃墓高峰 9-11am，盡量喺 10:30 前完成主要參觀。坐 Inclined Lift 上頂睇觀音像先，再行落嚟。</div>
-            <div class="qm-note high">🔴 清明高影響 — 骨灰塔所在地，清明前後拜祭人流大增</div>
-          </div>
-        </div>
-      </div>
+    <div class="ev"><div class="dot hid"></div>
+    <div class="ec sight" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">11:15</span><span class="elbl">🐍 Snake Temple 蛇廟</span><span class="tier hid">💎 Hidden</span><span class="qd none">🟢</span><span class="dur">⏱ 30min</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">去機場途中順路！全球唯一有真蛇嘅廟。市區去蛇廟約 20–25min Grab，再去機場約 10min。</p><div class="qnote none">🟢 清明已過，回復正常 ✅</div></div></div></div></div></div>
 
-      <div class="event-item">
-        <div class="event-dot tier-hidden"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">10:30</span>
-              <span class="event-label">Air Itam Market 周邊</span>
-              <span class="tier-badge hidden">💎 Hidden</span>
-              <span class="qm-dot medium">🟡</span>
-              <span class="duration-badge">⏱ 20min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">極樂寺山腳本地市場，清明期間更加熱鬧，可能見到祭品攤檔。</div>
-          </div>
-        </div>
-      </div>
+    <div class="ev"><div class="dot"></div>
+    <div class="ec food" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">12:00</span><span class="elbl">🍜 午餐</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">你地有list — 蛇廟附近食完即去機場</p></div></div></div></div></div>
 
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-food" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">11:00</span>
-              <span class="event-label">🍜 午餐</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">你地有list — Air Itam Laksa 超出名</div>
-          </div>
-        </div>
-      </div>
+    <div class="ev"><div class="dot"></div>
+    <div class="ec trans" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">13:00</span><span class="elbl">🚕 前往檳城機場</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">蛇廟去機場約 10min</p></div></div></div></div></div>
 
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-transport" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">12:00</span>
-              <span class="event-label">🚶 步行去 Penang Hill 纜車站</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">由極樂寺行去約 1km / 15min</div>
-          </div>
-        </div>
-      </div>
+    <div class="ev"><div class="dot"></div>
+    <div class="ec trans" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">13:15</span><span class="elbl">✈️ 抵達機場 Check-in</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">距起飛3小時10分 — 充裕時間 check-in、過海關、免稅店購物</p></div></div></div></div></div>
 
-      <div class="event-item">
-        <div class="event-dot highlight"></div>
-        <div class="event-card type-sight highlight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">12:15</span>
-              <span class="event-label">Penang Hill 升旗山</span>
-              <span class="tier-badge must">🔥 必去</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 2hr</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">纜車上 833m 山頂！自然景點，完全不受清明影響。山上涼爽，俯瞰全喬治市。提前網上買飛！</div>
-          </div>
-        </div>
-      </div>
+    <div class="ev"><div class="dot"></div>
+    <div class="ec special" onclick="tog(this)"><div class="ec-hdr"><div class="etags"><span class="tbadge">16:25</span><span class="elbl">✈️ 起飛！PEN → HKG 再見檳城 👋</span></div><span class="chev">▼</span></div>
+    <div class="eb-wrap"><div class="eb"><div class="eb-in"><p class="edesc">Safe flight! 下次再嚟！</p></div></div></div></div></div>
 
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-food" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">14:15</span>
-              <span class="event-label">☕ Coffee Time</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">你地有list — 山頂有 Café</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-transport" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">15:00</span>
-              <span class="event-label">🚃 纜車落山</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">落山後 Grab 去 Lorong Burma（緬甸巷）</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot tier-important"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">15:15</span>
-              <span class="event-label">Penang Botanic Gardens 植物園</span>
-              <span class="tier-badge important">⭐ 重要</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 30min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">落山順路！免費入場，快速行一圈。不受清明影響。<br><br>⚠️ <b>行程提醒：</b>植物園位於 Waterfall Road，而臥佛寺在 Lorong Burma。兩者距離約 3km，並非順路，需 Grab 前往（約10分鐘）。如時間緊湊可考慮略去。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-transport" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">15:50</span>
-              <span class="event-label">🚕 Grab 去 Lorong Burma</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">約10分鐘車程，前往多元宗教巡禮！</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot highlight"></div>
-        <div class="event-card type-sight highlight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">16:05</span>
-              <span class="event-label">🛕 臥佛寺 Wat Chayamangkalaram</span>
-              <span class="tier-badge must">🔥 必去</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 25min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">✅ 泰國佛寺，完全不受清明影響！寺內供奉33公尺長臥佛像 — 世界第三大！建於1845年，由維多利亞女皇特許暹羅人建造。佛身貼金箔，眼睛同腳指甲由貝殼鑲嵌，金碧輝煌。臥佛像身後有12座生肖立佛像。開放 08:00-17:00，免費入場。</div>
-            <div class="qm-note none">🟢 泰國佛寺，清明無影響 ✅</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot highlight"></div>
-        <div class="event-card type-sight highlight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">16:30</span>
-              <span class="event-label">🏛️ 緬甸佛寺 Dhammikarama</span>
-              <span class="tier-badge must">🔥 必去</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 25min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">✅ 就喺臥佛寺正對面！過條馬路就到。馬來西亞唯一嘅緬甸佛寺，建於1800年，係檳城第一間佛寺。全金色塔式建築，供奉27公尺高釋迦牟尼佛像。寺內有30幅描述生老病死嘅油畫。記得搵許願池同神獸 Panchaluba！免費入場。</div>
-            <div class="qm-note none">🟢 緬甸佛寺，清明無影響 ✅</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-transport" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">17:00</span>
-              <span class="event-label">🚕 Grab 去 Tanjung Bungah</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">約10-15分鐘車程，前往海上清真寺</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot highlight"></div>
-        <div class="event-card type-sight highlight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">17:15</span>
-              <span class="event-label">🕌 海上清真寺 Floating Mosque</span>
-              <span class="tier-badge must">🔥 必去</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 30min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">✅ 伊斯蘭清真寺，完全不受清明影響！建喺海上樁柱之上，漲潮時呈現漂浮海面嘅壯觀效果。免費入場，需穿著端莊（遮蓋肩膀同腿部），入內要脫鞋。黃昏嚟影相最靚！建議避開禮拜時間。<br><br>⚠️ <b>開放時間提醒：</b>海上清真寺 Masjid Terapung 開放非穆斯林入場時間為 <b>09:00–13:00 及 15:00–17:30</b>。17:15 到達需確認當日是否仍開放，或改為喺外面欣賞。</div>
-            <div class="qm-note none">🟢 伊斯蘭清真寺，清明無影響 ✅</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-special" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">17:45</span>
-              <span class="event-label">🌅 海上清真寺日落</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">夕陽映照海上清真寺，金光灑落海面 — 全檳城最靚日落之一！記得影相！</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-transport" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">18:30</span>
-              <span class="event-label">🚕 Grab 去 Gurney Drive</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">約10分鐘車程</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot tier-important"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">18:45</span>
-              <span class="event-label">Gurney Drive 海濱</span>
-              <span class="tier-badge important">⭐ 重要</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 15min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">沿海散步，不受清明影響。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-food" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">19:00</span>
-              <span class="event-label">🍽️ 晚餐</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">你地有list — Gurney Drive 附近好多嘢食</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-rest" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">20:00</span>
-              <span class="event-label">自由活動 / 休息</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">行咗成日，休息下！今日由華人寺廟到泰佛寺、緬甸佛寺、伊斯蘭清真寺 — 真正感受檳城多元宗教魅力！</div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
+</div>
 
-  <!-- ========== DAY 3 ========== -->
-  <div class="day-content" id="day-2">
-    <div class="day-header-card">
-      <h2>🎨 博物館 + Hidden Gems 日</h2>
-      <div class="subtitle">🔴 清明節正日 · 全日避開華人寺廟宗祠</div>
-      <div class="qm-status red">🔴 清明節正日 — 完全避開華人寺廟！</div>
-      <div class="day-note"><span class="note-icon">🔴</span><span>今日係清明節正日！華人寺廟、宗祠、墓園人潮最密。行程已特意安排全日去博物館、西式建築、藝術空間 — 全部不受清明影響！部分華人食店可能因拜祭而休息。</span></div>
+<!-- ══ INFO ══ -->
+<div class="panel" id="info" role="tabpanel">
+
+  <!-- 📱 Apps -->
+  <div class="ev"><div class="dot imp"></div>
+  <div class="ec sight" style="cursor:default;">
+    <div class="ec-hdr" style="cursor:default;"><div class="etags"><span class="elbl">📱 必備 Apps 與通訊</span></div></div>
+    <div class="eb-in" style="border-top:1px solid rgba(0,0,0,.05);padding:0 10px 10px;">
+      <p class="edesc" style="margin-top:6px"><strong>Grab</strong> — 絕對係必備，去邊都靠佢。建議出發前喺香港 download 定兼綁定信用卡，省得去到先慌手慌腳。</p>
+      <p class="edesc" style="margin-top:8px"><strong>支付：Touch 'n Go (TNG) eWallet</strong> — 而家馬來西亞好多小店同夜市都可以用 TNG 掃碼畀錢，支援香港 AlipayHK 跨境掃碼，用起嚟好方便。</p>
+      <p class="edesc" style="margin-top:8px"><strong>通訊：eSIM</strong> — 出發前買定，推薦 Celcom 或 Maxis 網絡，覆蓋較好。唔使落機先搞，省時省力。</p>
     </div>
+  </div></div>
 
-    <div class="timeline">
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-food" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">08:30</span>
-              <span class="event-label">🍳 早餐</span>
-              <span class="qm-dot medium">🟡</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">⚠️ 部分華人食店可能因清明祭祖而休息，建議準備 Plan B（印度餐廳、馬來食店）</div>
-          </div>
+  <!-- 💵 兌錢 -->
+  <div class="ev"><div class="dot imp"></div>
+  <div class="ec food" style="cursor:default;">
+    <div class="ec-hdr" style="cursor:default;"><div class="etags"><span class="elbl">💵 兌錢與匯率計算</span></div></div>
+    <div class="eb-in" style="border-top:1px solid rgba(0,0,0,.05);padding:0 10px 10px;">
+      <p class="edesc" style="margin-top:6px"><strong>現金 vs 電子</strong> — 大商場同餐廳通常收卡，但街邊檔（茶餐室、夜市、小店）強烈建議準備足夠現金（馬幣 RM）。</p>
+      <p class="edesc" style="margin-top:8px"><strong>暢錢</strong> — 喺香港暢定少少傍身，去到喬治市市區找換店匯率通常靚過機場。</p>
+      <div class="calc-wrap" style="margin-top:10px;">
+        <div class="calc-field">
+          <label>馬幣 RM</label>
+          <input id="rmIn" type="number" inputmode="decimal" placeholder="0.00" oninput="calcEx('rm')">
+        </div>
+        <div class="calc-arrow">⇄</div>
+        <div class="calc-field">
+          <label>港幣 HKD</label>
+          <input id="hkIn" type="number" inputmode="decimal" placeholder="0.00" oninput="calcEx('hk')">
         </div>
       </div>
-
-      <div class="event-item">
-        <div class="event-dot highlight"></div>
-        <div class="event-card type-sight highlight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">09:30</span>
-              <span class="event-label">藍屋 Cheong Fatt Tze Mansion</span>
-              <span class="tier-badge must">🔥 必去</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 1hr</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">✅ 完美清明日選擇！西式管理嘅博物館酒店，完全不受清明影響。靛藍色外牆極上鏡。導賞團 11am/2pm/3:30pm，RM17。<br><br>⚠️ <b>時間提醒：</b>09:30 到達時首個導賞團係 11am，建議先在外拍照，11am 參加導賞。或到附近食 Brunch 後返嚟。</div>
-            <div class="qm-note none">🟢 博物館酒店，清明無影響 ✅</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot highlight"></div>
-        <div class="event-card type-sight highlight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">10:45</span>
-              <span class="event-label">僑生博物館 Pinang Peranakan Mansion</span>
-              <span class="tier-badge must">🔥 必去</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 1hr</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">✅ 完美清明日選擇！私營博物館，不受影響。1000+件峇峇娘惹古董，RM25。</div>
-            <div class="qm-note none">🟢 私營博物館，清明無影響 ✅</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-food" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">12:00</span>
-              <span class="event-label">🍜 午餐</span>
-              <span class="qm-dot medium">🟡</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">⚠️ 部分華人攤檔可能休息。建議去印度餐廳、馬來餐廳或連鎖店作 Plan B</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot highlight"></div>
-        <div class="event-card type-sight highlight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">13:00</span>
-              <span class="event-label">Hin Bus Depot Art Centre</span>
-              <span class="tier-badge hidden">💎 Hidden</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 45min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">✅ 藝術空間，不受清明影響。舊巴士站改建，有畫廊、壁畫。週日可能有 Pop-up Market！</div>
-            <div class="qm-note none">🟢 藝術中心，清明無影響 ✅</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot tier-hidden"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">13:50</span>
-              <span class="event-label">Camera Museum 相機博物館</span>
-              <span class="tier-badge hidden">💎 Hidden</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 40min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">✅ 不受清明影響。幾百部古董相機，門票 RM25。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot tier-important"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">14:30</span>
-              <span class="event-label">St. George's Church</span>
-              <span class="tier-badge important">⭐ 重要</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 15min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">✅ 教堂，不受清明影響。東南亞最古老英國國教教堂（1818年）。Good Friday 後第一個週日 (Easter Sunday!) 可能有特別禮拜，或教堂關閉供外人參觀，建議到訪前確認。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-food" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">15:00</span>
-              <span class="event-label">☕ Coffee Time</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">你地有list</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot tier-important"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">16:00</span>
-              <span class="event-label">KOMTAR Rainbow Skywalk</span>
-              <span class="tier-badge important">⭐ 重要</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 1hr</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">✅ 商業設施，不受清明影響。68樓高空玻璃棧道，360度鳥瞰全檳城。日落時分上去最正！門票約 RM68。</div>
-            <div class="qm-note none">🟢 商業大樓，清明無影響 ✅</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-special" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">17:00</span>
-              <span class="event-label">🌅 KOMTAR 觀日落</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">68樓睇日落，全檳城盡收眼底</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">18:00</span>
-              <span class="event-label">補影壁畫 / 自由探索</span>
-              <span class="qm-dot none">🟢</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">壁畫區不受清明影響，重返影 miss 咗嘅作品。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-food" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">19:00</span>
-              <span class="event-label">🍽️ 晚餐 — 最後一晚大餐</span>
-              <span class="qm-dot medium">🟡</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">⚠️ 部分華人食店可能休息，建議有 Plan B</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot tier-hidden"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">20:30</span>
-              <span class="event-label">Armenian St 夜市 / 最後散步</span>
-              <span class="tier-badge hidden">💎 Hidden</span>
-              <span class="qm-dot none">🟢</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">週日夜晚，最後一晚感受喬治市。</div>
-          </div>
-        </div>
-      </div>
+      <p class="calc-note">參考匯率：1 RM ≈ 1.65 HKD（實際匯率以找換店為準）</p>
     </div>
-  </div>
+  </div></div>
 
-  <!-- ========== DAY 4 ========== -->
-  <div class="day-content" id="day-3">
-    <div class="day-header-card">
-      <h2>✈️ 最後半日 → 機場</h2>
-      <div class="subtitle">週一 · 清明過後回復正常 · 16:00 起飛</div>
-      <div class="qm-status green">🟢 清明已過 — 一切回復正常</div>
-      <div class="day-note"><span class="note-icon">💡</span><span>清明已過，一切正常。最遲 13:30 要到機場！預留 2.5hr check-in。</span></div>
+  <!-- 🌤️ 天氣 -->
+  <div class="ev"><div class="dot"></div>
+  <div class="ec trans" style="cursor:default;">
+    <div class="ec-hdr" style="cursor:default;"><div class="etags"><span class="elbl">🌤️ 天氣與實用提醒</span></div></div>
+    <div class="eb-in" style="border-top:1px solid rgba(0,0,0,.05);padding:0 10px 10px;">
+      <p class="edesc" style="margin-top:6px"><strong>天氣</strong> — 4月嘅檳城通常又熱又濕，下晝隨時有雷陣雨。一定要帶遮同太陽眼鏡。</p>
+      <div id="penang-weather" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd);border:1px solid #7dd3fc;border-radius:10px;padding:12px;margin-top:10px;margin-bottom:6px;text-align:center;box-shadow:0 2px 8px rgba(14,165,233,0.1);">
+        <div id="pw-loading" style="font-size:12px;color:#0284c7;font-weight:600;">⛅ 讀取檳城即時天氣中...</div>
+        <div id="pw-content" style="display:none;">
+          <div style="display:flex;justify-content:center;align-items:center;gap:12px;">
+            <div id="pw-icon" style="font-size:38px;line-height:1;">⛅</div>
+            <div style="text-align:left;">
+              <div id="pw-temp" style="font-size:24px;font-weight:800;color:#0369a1;line-height:1.1;">--°C</div>
+              <div id="pw-desc" style="font-size:12px;font-weight:700;color:#0284c7;margin-top:2px;">--</div>
+            </div>
+          </div>
+          <div style="font-size:11px;color:#0c4a6e;margin-top:10px;background:rgba(255,255,255,0.5);padding:5px;border-radius:6px;">
+            💧 濕度: <span id="pw-hum">--</span>% &nbsp;|&nbsp; 🌡️ 預測: <span id="pw-hl">--</span>
+          </div>
+        </div>
+      </div>
+      <p class="edesc" style="margin-top:8px"><strong>穿著</strong> — 去清真寺記得要著過膝褲/裙，女士最好自備絲巾包頭（雖然有長袍借，但自備較方便衛生）。</p>
+      <p class="edesc" style="margin-top:8px"><strong>清明節備忘</strong> — 塞車預算要鬆動啲，同埋提早 Book 定心水餐廳，清明前後部分食店可能休息。</p>
     </div>
+  </div></div>
 
-    <div class="timeline">
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-food" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">08:00</span>
-              <span class="event-label">🍳 早餐</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">你地有list — 最後一餐檳城早餐！華人食店已回復正常。</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot tier-hidden"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">09:00</span>
-              <span class="event-label">最後壁畫巡禮 / 手信</span>
-              <span class="qm-dot none">🟢</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">行下 Armenian St / Lebuh Pantai 買手信</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-food" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">09:50</span>
-              <span class="event-label">☕ Last Coffee</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">你地有list</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-transport" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">10:30</span>
-              <span class="event-label">🏨 Check-out & 執行李</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">收拾好行李準備出發</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot tier-hidden"></div>
-        <div class="event-card type-sight" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">11:00</span>
-              <span class="event-label">Snake Temple 蛇廟</span>
-              <span class="tier-badge hidden">💎 Hidden</span>
-              <span class="qm-dot none">🟢</span>
-              <span class="duration-badge">⏱ 30min</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">去機場途中順路！全球唯一有真蛇嘅廟。清明已過，人流正常。由市區出發車程約 20-25min，再由蛇廟去機場約 5-10min。<br><br>⚠️ <b>時間提醒：</b>10:30 check-out，行李問題需先安排。建議將行李寄存酒店或帶上 Grab 車（司機多數接受）。</div>
-            <div class="qm-note none">🟢 清明已過，回復正常 ✅</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-food" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">11:45</span>
-              <span class="event-label">🍜 午餐</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">你地有list — 附近食完即去機場</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-transport" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">12:30</span>
-              <span class="event-label">🚕 前往檳城機場</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">蛇廟去機場約 5-10min</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-transport" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">13:00</span>
-              <span class="event-label">✈️ 抵達機場</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">充裕時間 check-in、過海關、免稅店</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-dot"></div>
-        <div class="event-card type-special" onclick="toggleEvent(this)">
-          <div class="event-header">
-            <div class="event-tags">
-              <span class="time-badge">16:00</span>
-              <span class="event-label">✈️ 起飛！再見檳城 👋</span>
-            </div>
-            <span class="chevron">▼</span>
-          </div>
-          <div class="event-body">
-            <div class="event-desc">Safe flight! 下次再嚟！</div>
-          </div>
-        </div>
-      </div>
+  <!-- 🚨 緊急聯絡 -->
+  <div class="ev"><div class="dot hi"></div>
+  <div class="ec hi" style="cursor:default;">
+    <div class="ec-hdr" style="cursor:default;"><div class="etags"><span class="elbl">🚨 緊急聯絡資訊</span></div></div>
+    <div class="eb-in" style="border-top:1px solid rgba(0,0,0,.05);padding:0 10px 10px;">
+      <p class="edesc" style="margin-top:6px"><strong>報警 / 救護車：</strong> <a href="tel:999" style="color:var(--red);font-weight:700;text-decoration:none">999</a></p>
+      <p class="edesc" style="margin-top:8px"><strong>香港入境處協助在外香港居民熱線：</strong> <a href="tel:+85218968" style="color:var(--red);font-weight:700;text-decoration:none">+852 1868</a><br><span style="font-size:10px;color:var(--g400)">（可經入境處 App 致電）</span></p>
+      <p class="edesc" style="margin-top:8px"><strong>中國駐檳城總領事館：</strong> <a href="tel:+601110592308" style="color:var(--red);font-weight:700;text-decoration:none">+60 11 1059 2308</a></p>
     </div>
-  </div>
-
-  <!-- Summary Cards -->
-  <div class="summary-card qm-summary">
-    <div class="summary-title">🗓️ 清明影響一覽：邊日去邊度？</div>
-    <div class="summary-row"><span class="day-lbl green">4/3 Fri</span><span class="day-body">✅ Khoo Kongsi、觀音亭、姓氏橋 → 清明前最佳窗口</span></div>
-    <div class="summary-row"><span class="day-lbl yellow">4/4 Sat</span><span class="day-body">⚠️ Kek Lok Si 搶早 → 升旗山 → 🕌🛕🏛️ 多元宗教巡禮</span></div>
-    <div class="summary-row"><span class="day-lbl red">4/5 Sun</span><span class="day-body">🚫 全避華人廟！→ 藍屋、僑生、Hin Bus、KOMTAR</span></div>
-    <div class="summary-row"><span class="day-lbl green">4/6 Mon</span><span class="day-body">✅ 清明已過 → Snake Temple + 機場</span></div>
-  </div>
-
-  <div class="summary-card faith-summary">
-    <div class="summary-title">🕌🛕🏛️ 多元宗教巡禮（Day 2 下午）</div>
-    <div class="faith-summary-row"><span class="icon">🛕</span><div><span class="name" style="color:#b45309;">臥佛寺</span> <span class="desc">— 33m臥佛像・1845年建 — Lorong Burma</span></div></div>
-    <div class="faith-summary-row"><span class="icon">🏛️</span><div><span class="name" style="color:#a16207;">緬甸佛寺</span> <span class="desc">— 馬來西亞唯一・1800年建 — 臥佛寺對面</span></div></div>
-    <div class="faith-summary-row"><span class="icon">🕌</span><div><span class="name" style="color:#0e7490;">海上清真寺</span> <span class="desc">— 漲潮漂浮效果・日落必去 — Tanjung Bungah</span></div></div>
-  </div>
-
-  <div class="summary-card legend">
-    <div class="summary-title">圖例</div>
-    <div class="legend-wrap">
-      <span class="legend-item must">🔥 必去</span>
-      <span class="legend-item important">⭐ 重要</span>
-      <span class="legend-item hidden">💎 Hidden</span>
-      <span class="legend-item high">🔴 清明高影響</span>
-      <span class="legend-item medium">🟡 清明中影響</span>
-      <span class="legend-item none">🟢 清明無影響</span>
-    </div>
-    <div class="legend-hint">💡 點擊每個項目展開詳情及清明影響分析</div>
-  </div>
+  </div></div>
 
 </div>
 
+<!-- ══ MAP ══ -->
+<div class="panel" id="mp" role="tabpanel">
+  <div class="map-wrap">
+    <div class="map-ldr" id="mapLdr"><div class="spin"></div><p>載入地圖中…</p></div>
+    <div class="map-err" id="mapErr">
+      <span class="emo">🗺️</span>
+      <p>地圖暫時無法載入。<br>請確認網絡連接後重試。</p>
+    </div>
+    <iframe id="mapFr" title="檳城行程地圖" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <p class="map-hint">🍜 你地嘅飲食清單地圖 · 點擊圖示查看詳情</p>
+</div>
+
+<div class="sc leg">
+  <div class="stit">圖例</div>
+  <div class="lgw">
+    <span class="lg must">🔥 必去</span><span class="lg imp">⭐ 重要</span><span class="lg hid">💎 Hidden</span>
+    <span class="lg hi">🔴 清明高影響</span><span class="lg med">🟡 清明中影響</span><span class="lg none">🟢 清明無影響</span>
+  </div>
+  <div class="lgh">💡 點擊每個項目展開詳情</div>
+</div>
+
+</div><!-- /wrap -->
+
 <script>
-  function togglePanel(name, btn, activeClass) {
-    const panel = document.getElementById('panel-' + name);
-    const isOpen = panel.classList.contains('open');
-    // Close all
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('open'));
-    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active-red', 'active-blue'));
-    if (!isOpen) {
-      panel.classList.add('open');
-      btn.classList.add(activeClass);
-    }
-  }
+(function(){
+'use strict';
 
-  function switchDay(index, btn) {
-    document.querySelectorAll('.day-content').forEach(d => d.classList.remove('active'));
-    document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('day-' + index).classList.add('active');
-    btn.classList.add('active');
-  }
+/* Valid My Maps embed URL — uses the /embed endpoint with the correct mid */
+var MAP_SRC='https://www.google.com/maps/d/embed?mid=12bvrBL2iwGOCTgkwBzs8k-V4fVM9p1Y&hl=zh-TW&ll=5.4134%2C100.3295&z=14';
 
-  function toggleEvent(card) {
-    card.classList.toggle('open');
+var mapLoaded=false;
+var mapTimer=null;
+var current='d0';
+
+/* ── Tab switch ───────────────────────────── */
+window.sw=function(id,btn){
+  try{
+    if(id===current)return;
+    // Close open cards in departing panel
+    var out=document.getElementById(current);
+    if(out){out.querySelectorAll('.ec.open').forEach(function(c){c.classList.remove('open')});}
+    // Deactivate all
+    document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on')});
+    document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');t.setAttribute('aria-selected','false')});
+    // Activate target
+    var target=document.getElementById(id);
+    if(!target)return;
+    target.classList.add('on');
+    btn.classList.add('on');
+    btn.setAttribute('aria-selected','true');
+    current=id;
+    if(id==='mp')initMap();
+    if(id==='info')loadWeather();
+  }catch(e){console.error('sw:',e);}
+};
+
+/* ── Map init ─────────────────────────────── */
+function showMapError(){
+  var ldr=document.getElementById('mapLdr');
+  var err=document.getElementById('mapErr');
+  if(ldr)ldr.classList.add('gone');
+  if(err)err.classList.add('show');
+}
+
+function initMap(){
+  if(mapLoaded)return;
+  var fr =document.getElementById('mapFr');
+  var ldr=document.getElementById('mapLdr');
+  if(!fr||!ldr)return;
+
+  /* 5-second timeout — if iframe hasn't fired onload, show error */
+  mapTimer=setTimeout(function(){
+    if(!mapLoaded)showMapError();
+  },5000);
+
+  fr.onload=function(){
+    /* Google Maps /embed returns 200 even for bad URLs, but the frame
+       does fire onload once the page renders — treat any load as success */
+    if(mapLoaded)return;
+    mapLoaded=true;
+    clearTimeout(mapTimer);
+    ldr.classList.add('fade');
+    setTimeout(function(){ldr.classList.add('gone');},380);
+  };
+
+  fr.onerror=function(){
+    clearTimeout(mapTimer);
+    showMapError();
+  };
+
+  try{
+    fr.src=MAP_SRC;
+  }catch(e){
+    clearTimeout(mapTimer);
+    showMapError();
   }
+}
+
+/* ── Card toggle ──────────────────────────── */
+window.tog=function(card){
+  if(card)card.classList.toggle('open');
+};
+
+/* ── Currency calculator ──────────────────── */
+window.calcEx=function(type){
+  var rate=1.65;
+  var rmIn=document.getElementById('rmIn');
+  var hkIn=document.getElementById('hkIn');
+  if(!rmIn||!hkIn)return;
+  if(type==='rm'){
+    var v=parseFloat(rmIn.value);
+    hkIn.value=isNaN(v)?'':(v*rate).toFixed(2);
+  }else{
+    var v=parseFloat(hkIn.value);
+    rmIn.value=isNaN(v)?'':(v/rate).toFixed(2);
+  }
+};
+
+/* ── Weather (Open-Meteo) ─────────────────── */
+window.loadWeather=function(){
+  if(window.weatherLoaded)return;
+  var url='https://api.open-meteo.com/v1/forecast?latitude=5.4112&longitude=100.3354&current=temperature_2m,relative_humidity_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FSingapore&forecast_days=1';
+  fetch(url).then(function(res){return res.json();}).then(function(data){
+    var t=data.current.temperature_2m;
+    var h=data.current.relative_humidity_2m;
+    var wc=data.current.weather_code;
+    var max=data.daily.temperature_2m_max[0];
+    var min=data.daily.temperature_2m_min[0];
+    var emoji='⛅',desc='多雲';
+    if(wc<=1){emoji='☀️';desc='天晴';}
+    else if(wc<=3){emoji='⛅';desc='間中有雲';}
+    else if(wc<=49){emoji='🌫️';desc='有霧';}
+    else if(wc<=59){emoji='🌦️';desc='微雨';}
+    else if(wc<=69){emoji='🌧️';desc='有雨';}
+    else if(wc<=99){emoji='⛈️';desc='雷雨';}
+    document.getElementById('pw-temp').innerText=Math.round(t)+'°C';
+    document.getElementById('pw-icon').innerText=emoji;
+    document.getElementById('pw-desc').innerText=desc;
+    document.getElementById('pw-hum').innerText=h;
+    document.getElementById('pw-hl').innerText=Math.round(min)+'°C – '+Math.round(max)+'°C';
+    document.getElementById('pw-loading').style.display='none';
+    document.getElementById('pw-content').style.display='block';
+    window.weatherLoaded=true;
+  }).catch(function(){
+    var el=document.getElementById('pw-loading');
+    if(el)el.innerText='⚠️ 無法載入天氣資料，請檢查網絡';
+  });
+};
+
+})();
 </script>
 </body>
 </html>
