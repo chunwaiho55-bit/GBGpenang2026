@@ -536,40 +536,7 @@ body{
 <!-- ══ INFO ══ -->
 <div class="panel" id="info" role="tabpanel">
 
-  <!-- 📱 Apps -->
-  <div class="ev"><div class="dot imp"></div>
-  <div class="ec sight" style="cursor:default;">
-    <div class="ec-hdr" style="cursor:default;"><div class="etags"><span class="elbl">📱 必備 Apps 與通訊</span></div></div>
-    <div class="eb-in" style="border-top:1px solid rgba(0,0,0,.05);padding:0 10px 10px;">
-      <p class="edesc" style="margin-top:6px"><strong>Grab</strong> — 絕對係必備，去邊都靠佢。建議出發前喺香港 download 定兼綁定信用卡，省得去到先慌手慌腳。</p>
-      <p class="edesc" style="margin-top:8px"><strong>支付：Touch 'n Go (TNG) eWallet</strong> — 而家馬來西亞好多小店同夜市都可以用 TNG 掃碼畀錢，支援香港 AlipayHK 跨境掃碼，用起嚟好方便。</p>
-      <p class="edesc" style="margin-top:8px"><strong>通訊：eSIM</strong> — 出發前買定，推薦 Celcom 或 Maxis 網絡，覆蓋較好。唔使落機先搞，省時省力。</p>
-    </div>
-  </div></div>
-
-  <!-- 💵 兌錢 -->
-  <div class="ev"><div class="dot imp"></div>
-  <div class="ec food" style="cursor:default;">
-    <div class="ec-hdr" style="cursor:default;"><div class="etags"><span class="elbl">💵 兌錢與匯率計算</span></div></div>
-    <div class="eb-in" style="border-top:1px solid rgba(0,0,0,.05);padding:0 10px 10px;">
-      <p class="edesc" style="margin-top:6px"><strong>現金 vs 電子</strong> — 大商場同餐廳通常收卡，但街邊檔（茶餐室、夜市、小店）強烈建議準備足夠現金（馬幣 RM）。</p>
-      <p class="edesc" style="margin-top:8px"><strong>暢錢</strong> — 喺香港暢定少少傍身，去到喬治市市區找換店匯率通常靚過機場。</p>
-      <div class="calc-wrap" style="margin-top:10px;">
-        <div class="calc-field">
-          <label>馬幣 RM</label>
-          <input id="rmIn" type="number" inputmode="decimal" placeholder="0.00" oninput="calcEx('rm')">
-        </div>
-        <div class="calc-arrow">⇄</div>
-        <div class="calc-field">
-          <label>港幣 HKD</label>
-          <input id="hkIn" type="number" inputmode="decimal" placeholder="0.00" oninput="calcEx('hk')">
-        </div>
-      </div>
-      <p class="calc-note">參考匯率：1 RM ≈ 1.65 HKD（實際匯率以找換店為準）</p>
-    </div>
-  </div></div>
-
-  <!-- 🌤️ 天氣 -->
+  <!-- 1. 🌤️ 天氣 -->
   <div class="ev"><div class="dot"></div>
   <div class="ec trans" style="cursor:default;">
     <div class="ec-hdr" style="cursor:default;"><div class="etags"><span class="elbl">🌤️ 天氣與實用提醒</span></div></div>
@@ -595,7 +562,55 @@ body{
     </div>
   </div></div>
 
-  <!-- 🚨 緊急聯絡 -->
+  <!-- 2. 💵 匯率 -->
+  <div class="ev"><div class="dot imp"></div>
+  <div class="ec food" style="cursor:default;">
+    <div class="ec-hdr" style="cursor:default;"><div class="etags"><span class="elbl">💵 兌錢與匯率計算</span></div></div>
+    <div class="eb-in" style="border-top:1px solid rgba(0,0,0,.05);padding:0 10px 10px;">
+      <p class="edesc" style="margin-top:6px"><strong>現金 vs 電子</strong> — 大商場同餐廳通常收卡，但街邊檔（茶餐室、夜市、小店）強烈建議準備足夠現金（馬幣 RM）。</p>
+      <p class="edesc" style="margin-top:8px"><strong>暢錢</strong> — 喺香港暢定少少傍身，去到喬治市市區找換店匯率通常靚過機場。</p>
+      <div class="calc-wrap" style="margin-top:10px;">
+        <div class="calc-field">
+          <label>馬幣 RM</label>
+          <input id="rmIn" type="number" inputmode="decimal" placeholder="0.00" oninput="calcEx('rm')">
+        </div>
+        <div class="calc-arrow">⇄</div>
+        <div class="calc-field">
+          <label>港幣 HKD</label>
+          <input id="hkIn" type="number" inputmode="decimal" placeholder="0.00" oninput="calcEx('hk')">
+        </div>
+      </div>
+      <p class="calc-note">參考匯率：1 RM ≈ 1.65 HKD（實際匯率以找換店為準）</p>
+    </div>
+  </div></div>
+
+  <!-- 3. 🏨 酒店 -->
+  <div class="ev"><div class="dot imp"></div>
+  <div class="ec rest" style="cursor:default;">
+    <div class="ec-hdr" style="cursor:default;"><div class="etags"><span class="elbl">🏨 酒店資料</span></div></div>
+    <div class="eb-in" style="border-top:1px solid rgba(0,0,0,.05);padding:0 10px 10px;">
+      <p class="edesc" style="margin-top:6px;font-size:12px;font-weight:700;color:var(--g800);">LINN House Peranakan Residence George Town</p>
+      <div style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div style="background:var(--green-bg);border:1px solid var(--green-s);border-radius:8px;padding:8px;">
+          <div style="font-size:10px;font-weight:700;color:var(--green);margin-bottom:3px;">✅ 入住</div>
+          <div style="font-size:11px;font-weight:700;color:var(--g800);">2026年4月2日（四）</div>
+          <div style="font-size:11px;color:var(--g600);margin-top:2px;">15:00 – 22:30</div>
+        </div>
+        <div style="background:var(--red-bg);border:1px solid var(--red-s);border-radius:8px;padding:8px;">
+          <div style="font-size:10px;font-weight:700;color:var(--red);margin-bottom:3px;">🔑 退房</div>
+          <div style="font-size:11px;font-weight:700;color:var(--g800);">2026年4月6日（一）</div>
+          <div style="font-size:11px;color:var(--g600);margin-top:2px;">07:30 – 12:00</div>
+        </div>
+      </div>
+      <div style="margin-top:8px;background:var(--g50);border:1px solid var(--g200);border-radius:8px;padding:8px;">
+        <p class="edesc"><strong>預訂：</strong>2位成人 · 4晚 · 1間客房 · 豪華雙人房</p>
+        <p class="edesc" style="margin-top:5px;">📍 <strong>地址：</strong>34, Lebuh Cintra, 10200 喬治市</p>
+        <p class="edesc" style="margin-top:5px;">📞 <strong>電話：</strong><a href="tel:+60142613759" style="color:var(--blue);font-weight:700;text-decoration:none;">+60 14 261 3759</a></p>
+      </div>
+    </div>
+  </div></div>
+
+  <!-- 4. 🚨 緊急聯絡 -->
   <div class="ev"><div class="dot hi"></div>
   <div class="ec hi" style="cursor:default;">
     <div class="ec-hdr" style="cursor:default;"><div class="etags"><span class="elbl">🚨 緊急聯絡資訊</span></div></div>
@@ -603,6 +618,17 @@ body{
       <p class="edesc" style="margin-top:6px"><strong>報警 / 救護車：</strong> <a href="tel:999" style="color:var(--red);font-weight:700;text-decoration:none">999</a></p>
       <p class="edesc" style="margin-top:8px"><strong>香港入境處協助在外香港居民熱線：</strong> <a href="tel:+85218968" style="color:var(--red);font-weight:700;text-decoration:none">+852 1868</a><br><span style="font-size:10px;color:var(--g400)">（可經入境處 App 致電）</span></p>
       <p class="edesc" style="margin-top:8px"><strong>中國駐檳城總領事館：</strong> <a href="tel:+601110592308" style="color:var(--red);font-weight:700;text-decoration:none">+60 11 1059 2308</a></p>
+    </div>
+  </div></div>
+
+  <!-- 5. 📱 Apps -->
+  <div class="ev"><div class="dot imp"></div>
+  <div class="ec sight" style="cursor:default;">
+    <div class="ec-hdr" style="cursor:default;"><div class="etags"><span class="elbl">📱 必備 Apps 與通訊</span></div></div>
+    <div class="eb-in" style="border-top:1px solid rgba(0,0,0,.05);padding:0 10px 10px;">
+      <p class="edesc" style="margin-top:6px"><strong>Grab</strong> — 絕對係必備，去邊都靠佢。建議出發前喺香港 download 定兼綁定信用卡，省得去到先慌手慌腳。</p>
+      <p class="edesc" style="margin-top:8px"><strong>支付：Touch 'n Go (TNG) eWallet</strong> — 而家馬來西亞好多小店同夜市都可以用 TNG 掃碼畀錢，支援香港 AlipayHK 跨境掃碼，用起嚟好方便。</p>
+      <p class="edesc" style="margin-top:8px"><strong>通訊：eSIM</strong> — 出發前買定，推薦 Celcom 或 Maxis 網絡，覆蓋較好。唔使落機先搞，省時省力。</p>
     </div>
   </div></div>
 
